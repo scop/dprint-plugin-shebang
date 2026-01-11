@@ -65,7 +65,7 @@ impl SyncPluginHandler<Configuration> for ShebangPluginHandler {
                     "py",
                     // https://www.ruby-lang.org
                     "rb",
-                    // https://www.gnu.org/software/sed                    "sed",
+                    // https://www.gnu.org/software/sed
                     "sed",
                     // https://en.wikipedia.org/wiki/Shell_script
                     "sh", "bash", "csh", "fish", "ksh", "tcsh", "zsh",
@@ -131,13 +131,13 @@ impl SyncPluginHandler<Configuration> for ShebangPluginHandler {
 
 pub fn format_shebang(text: &str) -> Result<Option<String>> {
     let re = regex!(
-        r#"^#!(?x)
-        [\ \t]*
-        (?<interpreter>[^\ \t]+)
-        (?:[\ \t]*?
-          |[\ \t]+(?<args>[^\ \t][^\r\n]*?)
+        r#"^#!(?x)                          # hashbang
+        [\ \t]*                             # optional whitespace
+        (?<interpreter>[^\ \t]+)            # interpreter
+        (?:[\ \t]*?                         # optional whitespace
+          |[\ \t]+(?<args>[^\ \t][^\r\n]*?) # optional whitespace, then args; note that whitespace after args is part of args, not stripped
         )?
-        (?<end>[\r\n]|$)
+        (?<end>[\r\n]|$)                    # end of line
     "#
     );
     if let Some(captures) = re.captures(&text[..cmp::min(text.len(), 1024)]) {
