@@ -110,11 +110,18 @@ impl SyncPluginHandler<Configuration> for ShebangPluginHandler {
         request: SyncFormatRequest<Configuration>,
         _format_with_host: impl FnMut(SyncHostFormatRequest) -> FormatResult,
     ) -> FormatResult {
+        let bytes;
         if request.range.is_some() {
-            return Ok(None); // TODO, if from the beginning?
+            let range = request.range.unwrap();
+            if range.start != 0 {
+                return Ok(None);
+            }
+            bytes = request.file_bytes[range.start..range.end].to_vec();
+        } else {
+            bytes = request.file_bytes;
         }
 
-        let text = String::from_utf8(request.file_bytes)?;
+        let text = String::from_utf8(bytes)?;
         let result = format_shebang(&text)?;
         if result.is_none() {
             return Ok(None);
