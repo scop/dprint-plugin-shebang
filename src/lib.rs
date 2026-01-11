@@ -45,6 +45,10 @@ impl SyncPluginHandler<Configuration> for ShebangPluginHandler {
                     "exs",
                     // https://openjdk.org/jeps/330#Shebang_files
                     "java",
+                    // https://nodejs.org/en/learn/command-line/run-nodejs-scripts-from-the-command-line
+                    "js", "ts",
+                    // https://github.com/Kotlin/KEEP/blob/main/proposals/KEEP-0075-scripting-support.md
+                    "kts",
                     // https://www.lua.org
                     "lua",
                     // https://en.wikipedia.org/wiki/Make_(software)
@@ -52,9 +56,11 @@ impl SyncPluginHandler<Configuration> for ShebangPluginHandler {
                     // https://www.php.net/manual/en/features.commandline.usage.php
                     "php", "php3", "php4", "php5",
                     // https://perldoc.perl.org/perlrun#Location-of-Perl
-                    "pl", "t",
+                    "pl", "t", "perl",
                     // https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html
                     "postinst", "postrm", "preinst", "prerm",
+                    // https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comments#shebang
+                    "ps1",
                     // https://docs.python.org/3/using/unix.html#miscellaneous
                     "py",
                     // https://www.ruby-lang.org
