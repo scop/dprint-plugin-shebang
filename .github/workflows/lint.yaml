@@ -1,32 +1,35 @@
-name: CI
+name: Lint
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 permissions: {}
 
-env:
-  CARGO_TERM_COLOR: always
-
 jobs:
-  lint:
+  clippy:
+    name: Clippy
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      CARGO_TERM_COLOR: always
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
-      - run: cargo clippy --verbose
-  test:
+      - run: cargo --verbose clippy
+
+  committed:
+    name: Committed
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      FORCE_COLOR: true
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
+          fetch-depth: 0
           persist-credentials: false
-      - run: cargo test --verbose
+      - uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
+      - run: lefthook run commits-on-pr-branch --no-tty
