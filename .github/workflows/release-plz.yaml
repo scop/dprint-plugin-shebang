@@ -1,0 +1,41 @@
+name: Release-plz
+
+on:
+  push:
+    branches:
+      - main
+
+permissions: {}
+
+jobs:
+  pr:
+    name: PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: release-plz/action@487eb7b5c085a664d5c5ca05f4159bd9b591182a # v0.5.120
+        with:
+          config: .config/release-plz.toml
+          command: release-pr
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write # for crates.io trusted publishing
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: release-plz/action@487eb7b5c085a664d5c5ca05f4159bd9b591182a # v0.5.120
+        with:
+          config: .config/release-plz.toml
+          command: release
