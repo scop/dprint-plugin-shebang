@@ -14,15 +14,12 @@ jobs:
     permissions:
       contents: read
     steps:
+      - uses: scop/common/force-color@main
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
       - run: rustup target add wasm32-unknown-unknown
-        env:
-          RUSTUP_TERM_COLOR: always
       - run: cargo build --release --target wasm32-unknown-unknown
-        env:
-          CARGO_TERM_COLOR: always
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           path: target/wasm32-unknown-unknown/release/dprint_plugin_shebang.wasm
@@ -34,6 +31,7 @@ jobs:
       contents: write # for creating releases
     needs: build
     steps:
+      - uses: scop/common/force-color@main
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false

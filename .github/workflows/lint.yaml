@@ -11,9 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    env:
-      CARGO_TERM_COLOR: always
     steps:
+      - uses: scop/common/force-color@main
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
@@ -24,9 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    env:
-      FORCE_COLOR: true
     steps:
+      - uses: scop/common/force-color@main
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           fetch-depth: 0
