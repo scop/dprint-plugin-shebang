@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+      - run: rustup target add wasm32-unknown-unknown
+        env:
+          RUSTUP_TERM_COLOR: always
+      - run: cargo build --release --target wasm32-unknown-unknown
+        env:
+          CARGO_TERM_COLOR: always
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          path: target/wasm32-unknown-unknown/release/dprint_plugin_shebang.wasm
+
+  github:
+    name: GitHub
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # for creating releases
+    needs: build
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Sanity check tag vs version
+        run: grep -xF "version = \"$GITHUB_REF_NAME\"" Cargo.toml
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          path: dist/
+      - run: ln -s dprint_plugin_shebang.wasm dist/plugin.wasm
+      - run: gh release create --generate-notes "$GITHUB_REF_NAME" dist/plugin.wasm
+        env:
+          GH_TOKEN: ${{ github.token }}
