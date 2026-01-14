@@ -151,7 +151,11 @@ pub fn format_shebang(text: &str) -> Result<Option<String>> {
         let interpreter = captures.name("interpreter").unwrap().as_str();
         let args = captures.name("args").map_or("", |m| m.as_str());
         if args.is_empty() {
-            return Ok(Some(String::from(&format!("#!{}{}", interpreter, &text[end..]))));
+            return Ok(Some(String::from(&format!(
+                "#!{}{}",
+                interpreter,
+                &text[end..]
+            ))));
         }
         return Ok(Some(String::from(&format!(
             "#!{} {}{}",
