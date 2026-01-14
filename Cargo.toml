@@ -2,7 +2,7 @@
 name = "dprint-plugin-shebang"
 version = "0.0.1"
 authors = ["Ville Skyttä"]
-edition = "2021"
+edition = "2024"
 description = "Script shebang line formatter plugin for dprint"
 repository = "https://github.com/scop/dprint-plugin-shebang"
 license = "MIT"
