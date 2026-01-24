@@ -1,3 +1,5 @@
 [tools]
 committed = "1.1.10"
+dprint = "0.51.1"
 lefthook = "latest"
+typos = "1.42.1"

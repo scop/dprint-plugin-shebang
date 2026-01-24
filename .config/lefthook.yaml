@@ -1,9 +1,5 @@
-commit-msg:
-  commands:
-    committed:
-      run: mise exec -- committed --config=.config/committed.toml --fixup --wip --commit-file="{1}"
-
-commits-on-pr-branch:
-  commands:
-    committed:
-      run: mise exec -- committed --config=.config/committed.toml -vv --no-merge-commit HEAD~..HEAD^2
+remotes:
+  - git_url: https://github.com/scop/common.git
+    refetch_frequency: 24h
+    configs:
+      - lefthook/all.yaml
