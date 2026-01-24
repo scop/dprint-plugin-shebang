@@ -4,6 +4,6 @@
     "github>scop/common"
   ],
   "lockFileMaintenance": {
-     "enabled": true
+    "enabled": true
   }
 }
