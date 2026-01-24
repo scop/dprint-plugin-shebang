@@ -3,9 +3,9 @@ name = "dprint-plugin-shebang"
 version = "0.0.1"
 authors = ["Ville Skyttä"]
 edition = "2024"
-description = "Script shebang line formatter plugin for dprint"
-repository = "https://github.com/scop/dprint-plugin-shebang"
 license = "MIT"
+repository = "https://github.com/scop/dprint-plugin-shebang"
+description = "Script shebang line formatter plugin for dprint"
 
 [lib]
 crate-type = ["lib", "cdylib"]
