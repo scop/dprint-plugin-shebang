@@ -22,6 +22,6 @@ jobs:
       - uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
       - run: lefthook run pre-commit --all-files --no-tty
       - run: cargo --verbose fmt
-      - uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27 # v1.3.2
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1.3.4
         with:
           commit-message: "chore: autofix.ci automated fixes"
