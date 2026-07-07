@@ -1,3 +1,6 @@
+[settings]
+lockfile_platforms = [] # all here, even if local global config reduces the set
+
 [tools]
 committed = "1.1.11"
 dprint = "0.55.1"
