@@ -5,5 +5,5 @@ lockfile_platforms = [] # all here, even if local global config reduces the set
 committed = "1.1.11"
 dprint = "0.55.2"
 lefthook = "latest"
-rumdl = "0.2.26"
+rumdl = "v0.2.48"
 typos = "1.48.0"
