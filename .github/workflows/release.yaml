@@ -42,6 +42,7 @@ jobs:
         with:
           path: dist/
       - run: ln -s dprint_plugin_shebang.wasm dist/plugin.wasm
-      - run: gh release create --generate-notes "$GITHUB_REF_NAME" dist/plugin.wasm
+      - run: sed "s/0\.0\.0/$GITHUB_REF_NAME/" deployment/schema.json > dist/schema.json
+      - run: gh release create --generate-notes "$GITHUB_REF_NAME" dist/plugin.wasm dist/schema.json
         env:
           GH_TOKEN: ${{ github.token }}

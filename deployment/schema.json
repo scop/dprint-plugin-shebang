@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://plugins.dprint.dev/scop/dprint-plugin-shebang/0.0.0/schema.json",
+  "title": "Config",
+  "description": "Configuration for dprint-plugin-shebang.",
+  "type": "object",
+  "properties": {
+    "locked": {
+      "description": "Whether the configuration is not allowed to be overridden or extended.",
+      "type": "boolean"
+    },
+    "associations": {
+      "description": "File patterns to associate with this plugin. Use this to have the plugin format a file it normally wouldn't.",
+      "anyOf": [
+        {
+          "description": "File pattern to associate with this plugin.",
+          "type": "string"
+        },
+        {
+          "description": "File patterns to associate with this plugin.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}
