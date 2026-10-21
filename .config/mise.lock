@@ -127,7 +127,7 @@ url_api = "https://api.github.com/repos/evilmartians/lefthook/releases/assets/63
 provenance = "github-attestations"
 
 [[tools.rumdl]]
-version = "v0.2.79"
+version = "0.2.79"
 backend = "aqua:rvben/rumdl"
 specifiers = ["0.2.79"]
 
