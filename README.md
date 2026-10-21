@@ -12,3 +12,8 @@ dprint config add scop/shebang
 ```
 
 This plugin provides no configuration options.
+
+Many common script filename extensions and some whole filenames are
+associated with this plugin out of the box. However, scripts without
+filename extensions typically need to be associated manually using
+[dprint's associations config](https://dprint.dev/config/#associations).
