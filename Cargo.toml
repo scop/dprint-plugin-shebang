@@ -1,6 +1,6 @@
 [package]
 name = "dprint-plugin-shebang"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Ville Skyttä"]
 edition = "2024"
 license = "MIT"
