@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://plugins.dprint.dev/scop/dprint-plugin-shebang/0.0.0/schema.json",
+  "title": "Config",
+  "description": "Configuration for dprint-plugin-shebang.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
