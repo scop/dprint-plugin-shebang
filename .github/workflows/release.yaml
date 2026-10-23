@@ -48,7 +48,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
   npm:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04 # for recent enough npm
     permissions:
       contents: read
       id-token: write # for trusted publishing
